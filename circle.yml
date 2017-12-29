@@ -1,21 +1,21 @@
 machine:
-  timezone:
-    Asia/Seoul
+  timezone: Asia/Seoul
   java:
     version: oraclejdk8
 
 dependencies:
   pre:
-    - curl -s toast.sh/install | bash
+    - curl -s toast.sh/install-v3 | bash
   post:
-    - ~/toaster/toast.sh config circle local nalbam $TOAST_TOKEN
+    - ~/toaster/toast.sh config REGION ap-northeast-2
+    - ~/toaster/toast.sh config BUCKET repo.nalbam.com
 
 compile:
   pre:
-    - ~/toaster/toast.sh build version $CIRCLE_BRANCH
+    - ~/toaster/toast.sh version $CIRCLE_BRANCH $CIRCLE_BUILD_NUM
     - ~/toaster/extra/composer.sh
   override:
-    - mvn clean package
+    - mvn clean package -DskipTests
 
 test:
   override:
@@ -25,8 +25,8 @@ deployment:
   development:
     branch: /^(?!master$).*$/
     commands:
-      - ~/toaster/toast.sh build save web public
+      - ~/toaster/toast.sh publish bucket
   production:
     branch: master
     commands:
-      - ~/toaster/toast.sh build save web public
+      - ~/toaster/toast.sh publish bucket
