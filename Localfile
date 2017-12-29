@@ -1,0 +1,5 @@
+NAME nalbam-toast
+ROOT src/main/wabapp
+DOMAIN nalbam.toast.sh
+LOCAL nalbam.local.toast.sh
+PHP 7
