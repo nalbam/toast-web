@@ -150,7 +150,7 @@ CREATE TABLE IF NOT EXISTS `nt_project` (
   `no` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `o_no` int(11) unsigned NOT NULL,
   `name` varchar(100) DEFAULT NULL,
-  `groupId` varchar(50) NOT NULL DEFAULT 'com.yanolja',
+  `groupId` varchar(50) NOT NULL DEFAULT 'com.demo',
   `artifactId` varchar(100) NOT NULL,
   `packaging` varchar(10) NOT NULL DEFAULT 'war',
   `major` int(11) NOT NULL DEFAULT '1',
@@ -265,7 +265,7 @@ CREATE TABLE IF NOT EXISTS `nt_target` (
 CREATE TABLE IF NOT EXISTS `nt_user` (
   `no` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `o_no` int(11) unsigned NOT NULL,
-  `provider` varchar(32) DEFAULT 'yanolja',
+  `provider` varchar(32) DEFAULT 'demo',
   `username` varchar(128) DEFAULT NULL,
   `nickname` varchar(128) DEFAULT NULL,
   `phoneNum` varchar(45) DEFAULT NULL,
