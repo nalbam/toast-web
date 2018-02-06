@@ -8,7 +8,7 @@ dependencies:
     - curl -s toast.sh/install-v3 | bash
   post:
     - ~/toaster/toast.sh config REGION ap-northeast-2
-    - ~/toaster/toast.sh config BUCKET repo.nalbam.com
+    - ~/toaster/toast.sh config BUCKET repo.toast.sh
 
 compile:
   pre:
