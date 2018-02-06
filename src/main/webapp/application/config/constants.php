@@ -101,27 +101,16 @@ define('SITE_AUTHOR', 'nalbam');
 
 // toast token
 define('TOAST_TOKEN', 'TT');
-define('KEY_CODE', 'kFeHuBWCd3xHyZj7256vQEgEM8vq3e2x');
+define('KEY_CODE', 'kFeXuBWCd3xHyZj7256vQEgEM8vq3e2x');
 define('IV_CODE', 'nRadLqpN3Ef5fc5Jys5n4tbAyW9qbJuz');
 
 // table
-define('TABLE_PREFIX', 'nt_');
+define('TABLE_PREFIX', 't_');
 
 // default
 define('DEFAULT_USR', 'ec2-user');
 define('DEFAULT_ORG', $org);
 define('DEFAULT_GID', 'com.' . $org);
-
-// company
-define('YA_NAME', '(주)야놀자');
-define('YA_BOSS', '이수진');
-define('YA_BIZ_NO', '220-87-42885');
-define('YA_NET_NO', '강남-14211호');
-define('YA_ADDRESS', '서울특별시 강남구 테헤란로 427');
-define('YA_POST', '06159');
-define('YA_CALL', '1644-1346');
-define('YA_MAIL', 'help@nalbam.com');
-define('YA_COPY', 'ⓒ nalbam');
 
 // site
 define('THIS_HOME', urlencode('http://' . $_SERVER['HTTP_HOST']));
