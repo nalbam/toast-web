@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `nt_certificate` (
   `certificate_key` text,
   `client_certificate` text,
   `reg_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `mod_date` varchar(100) DEFAULT NULL,
+  `mod_date` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`no`),
   KEY `name` (`o_no`,`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `nt_config` (
   `key` varchar(45) NOT NULL,
   `val` text,
   `reg_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `mod_date` varchar(100) DEFAULT NULL,
+  `mod_date` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`no`),
   KEY `key` (`o_no`,`key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `nt_fleet` (
   `eip` varchar(1) DEFAULT NULL,
   `locked` varchar(1) DEFAULT NULL,
   `reg_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `mod_date` varchar(100) DEFAULT NULL,
+  `mod_date` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`no`),
   UNIQUE KEY `phase` (`o_no`,`phase`,`fleet`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -139,7 +139,7 @@ CREATE TABLE IF NOT EXISTS `nt_phase` (
   `profile` text,
   `hosts` text,
   `reg_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `mod_date` varchar(100) DEFAULT NULL,
+  `mod_date` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`no`),
   KEY `phase` (`o_no`,`phase`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -255,7 +255,7 @@ CREATE TABLE IF NOT EXISTS `nt_target` (
   `deployYN` varchar(1) DEFAULT 'Y',
   `le` varchar(1) DEFAULT 'N',
   `reg_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `mod_date` varchar(100) DEFAULT NULL,
+  `mod_date` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`no`),
   KEY `f_no` (`f_no`,`p_no`,`deployYN`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
