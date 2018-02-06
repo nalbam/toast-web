@@ -105,7 +105,7 @@ define('KEY_CODE', 'kFeXuBWCd3xHyZj7256vQEgEM8vq3e2x');
 define('IV_CODE', 'nRadLqpN3Ef5fc5Jys5n4tbAyW9qbJuz');
 
 // table
-define('TABLE_PREFIX', 't_');
+define('TABLE_PREFIX', 'nt_');
 
 // default
 define('DEFAULT_USR', 'ec2-user');
