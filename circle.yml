@@ -30,3 +30,7 @@ deployment:
     branch: master
     commands:
       - ~/toaster/toast.sh publish bucket public
+
+general:
+  artifacts:
+    - target
