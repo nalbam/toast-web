@@ -15,7 +15,7 @@ compile:
     - ~/toaster/toast.sh version $CIRCLE_BRANCH $CIRCLE_BUILD_NUM
     - ~/toaster/extra/composer.sh
   override:
-    - mvn clean package -DskipTests
+    - mvn package -DskipTests
 
 test:
   override:
