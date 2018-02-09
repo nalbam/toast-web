@@ -91,7 +91,7 @@ $arr = explode('.', SERVER_NAME);
 if (count($arr) > 0) {
     $org = $arr[0];
 } else {
-    $org = 'nalbam';
+    $org = 'demo';
 }
 
 // info

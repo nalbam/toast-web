@@ -306,9 +306,9 @@ class MY_Controller extends CI_Controller
             (object)['key' => 'profile', 'desc' => '.bash_profile : Default Bash Profile', 'type' => 'area'],
             (object)['key' => '---', 'desc' => 'SSH', 'type' => '---'],
             (object)['key' => 'ssh_user', 'desc' => 'User Account (' . DEFAULT_USR . ')', 'type' => 'text'],
-            (object)['key' => 'ssh_config', 'desc' => '.ssh/config : SSH Config', 'type' => 'area'],
-            (object)['key' => 'rsa_public_key', 'desc' => '.ssh/authorized_keys : RSA Public Key - Slave', 'type' => 'area'],
-            (object)['key' => 'rsa_private_key', 'desc' => '.ssh/id_rsa : RSA Private Key - Master', 'type' => 'area'],
+            (object)['key' => 'ssh_config', 'desc' => '.ssh/config : SSH Config', 'type' => 'area'], // deprecated
+            (object)['key' => 'rsa_public_key', 'desc' => '.ssh/authorized_keys : RSA Public Key - Slave', 'type' => 'area'], // deprecated
+            (object)['key' => 'rsa_private_key', 'desc' => '.ssh/id_rsa : RSA Private Key - Master', 'type' => 'area'], // deprecated
             (object)['key' => '---', 'desc' => 'AWS', 'type' => '---'],
             (object)['key' => 'aws_config', 'desc' => '.aws/config : AWS CLI - Config', 'type' => 'area'],
             (object)['key' => 'aws_slave', 'desc' => '.aws/credentials : AWS CLI - S3 Slave', 'type' => 'area'],
@@ -326,7 +326,7 @@ class MY_Controller extends CI_Controller
             (object)['key' => 'repo_group', 'desc' => 'Package GroupId (' . DEFAULT_GID . ')', 'type' => 'text'],
             (object)['key' => 'repo_bucket', 'desc' => 'Package Bucket (repo.' . DEFAULT_ORG . '.com)', 'type' => 'text'],
             (object)['key' => '---', 'desc' => 'CI', 'type' => '---'],
-            (object)['key' => 'ci_url', 'desc' => 'Jenkins URL (http://ci.' . DEFAULT_ORG . '.com:8080/jenkins)', 'type' => 'text'],
+            (object)['key' => 'ci_url', 'desc' => 'Jenkins URL (http://ci.' . DEFAULT_ORG . '.com/jenkins)', 'type' => 'text'],
             (object)['key' => 'ci_token', 'desc' => 'Jenkins Token for Remote Build', 'type' => 'text'],
             (object)['key' => '---', 'desc' => 'Notification', 'type' => '---'],
             (object)['key' => 'slack_hook', 'desc' => 'Slack Webhook URL', 'type' => 'text'],
