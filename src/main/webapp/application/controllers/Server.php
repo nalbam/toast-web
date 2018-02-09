@@ -594,7 +594,7 @@ class Server extends MY_Controller
             }
 
             // terminate
-            $this->_release($server->id, $server->f_no);
+            $this->_release_ip($server->id, $server->f_no);
             $this->_terminate($server->id);
 
             // save log
@@ -1471,7 +1471,7 @@ class Server extends MY_Controller
         return $data;
     }
 
-    private function _release($id, $f_no)
+    private function _release_ip($id, $f_no)
     {
         // describe address by instance-id
         $params = 'ec2 describe-addresses --filters "Name=instance-id,Values=' . $id . '"';
@@ -1507,10 +1507,6 @@ class Server extends MY_Controller
                     ];
                     $this->m_ip->updateById($item->AllocationId, $ip);
                 }
-
-                // release address
-                //$params = 'ec2 release-address --allocation-id ' . $item->AllocationId;
-                //$this->_aws($params);
             }
         }
 
