@@ -314,7 +314,7 @@ class MY_Controller extends CI_Controller
             (object)['key' => 'aws_slave', 'desc' => '.aws/credentials : AWS CLI - S3 Slave', 'type' => 'area'],
             (object)['key' => 'aws_master', 'desc' => '.aws/credentials : AWS CLI - EC2/S3 Master', 'type' => 'area'],
             (object)['key' => 'aws_key_pair', 'desc' => 'AWS EC2 Key Name', 'type' => 'text'],
-            (object)['key' => 'aws_key_pem', 'desc' => 'AWS EC2 Key Pem', 'type' => 'text'],
+            (object)['key' => 'aws_key_pem', 'desc' => 'AWS EC2 Key Pem', 'type' => 'area'],
             (object)['key' => '---', 'desc' => 'Token', 'type' => '---'],
             (object)['key' => 'tt_token', 'desc' => 'Toast Token', 'type' => 'text'],
             (object)['key' => '---', 'desc' => 'Github', 'type' => '---'],
