@@ -117,9 +117,36 @@ class Ip extends MY_Controller
             return;
         }
 
+        $aid = '';
+        $eip = '';
+
+        // describe address by allocation-id
+        $params = 'ec2 describe-addresses --filters "Name=allocation-id,Values=' . $ip->id . '"';
+        $output = $this->_aws($params);
+
+        if (!empty($output)) {
+            $json = json_decode($output);
+
+            if (!empty($json) && !empty($json->Addresses)) {
+                foreach ($json->Addresses as $item) {
+                    if (!empty($item->AllocationId) && empty($item->InstanceId)) {
+                        // 삭제 가능
+                        $aid = $item->AllocationId;
+                        $eip = $item->PublicIp;
+                        break;
+                    }
+                }
+            }
+        }
+
+        if (empty($aid) || empty($eip)) {
+            $this->_message(false, $icon, 'danger', '할당된 ip 는 삭제 할수 없음.');
+            return;
+        }
+
         // release address
-        //$params = 'ec2 release-address --allocation-id ' . $ip->id;
-        //$this->_aws($params);
+        $params = 'ec2 release-address --allocation-id ' . $ip->id;
+        $this->_aws($params);
 
         // remove
         $this->m_ip->delete($no);

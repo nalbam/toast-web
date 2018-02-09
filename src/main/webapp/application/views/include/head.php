@@ -67,6 +67,7 @@
                                 <li><a href="/config"><i class="fa fa-cog"></i> Config</a></li>
                                 <li><a href="/certificate"><i class="fa fa-certificate"></i> Certificate</a></li>
                             <? } ?>
+                            <li><a href="/ip"><i class="fa fa-chess"></i> Ip</a></li>
                             <li><a href="/user"><i class="fa fa-users"></i> User</a></li>
                             <li><a href="/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
                         </ul>

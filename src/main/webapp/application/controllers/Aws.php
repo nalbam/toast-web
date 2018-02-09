@@ -390,7 +390,7 @@ class Aws extends MY_Controller
 
         $server = $this->m_server->getOneById($this->_ono(), $id);
 
-        // fleet ip pool
+        // fleet ip pool 중 할당 되지 않은 ip 찾음
         $ip = $this->m_ip->getOneFree($f_no);
         if (!empty($ip)) {
             // describe address by allocation-id
