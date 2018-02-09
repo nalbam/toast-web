@@ -189,7 +189,7 @@ class MY_Controller extends CI_Controller
 
     public function _sms($data)
     {
-        $url = INFRA_URL . '/sms/send';
+        $url = '/sms/send';
 
         try {
             $curl = curl_init($url);
