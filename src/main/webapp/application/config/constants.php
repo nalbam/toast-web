@@ -129,7 +129,7 @@ define('R_URL', 'redirect_url');
 define('ICON_TOAST', 'fa-anchor');
 define('ICON_DEPLOY', 'fa-download');
 define('ICON_APACHE', 'fa-pied-piper');
-define('ICON_LAUNCH', 'fa-ship');
+define('ICON_LAUNCH', 'fa-rocket');
 
 // cookie
 define('COOKIE_DOMAIN', SERVER_NAME);
