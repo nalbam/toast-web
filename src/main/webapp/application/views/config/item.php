@@ -36,11 +36,11 @@
                                         <? if ($config->type == 'text') { ?>
                                             <input type="text" name="val" class="form-control input-sm" value="<?= $config->val ?>">
                                         <? } else if ($config->type == 'list') { ?>
-                                            <select id="aws_<?= @$config->aws ?>" name="val" size="15" class="form-control input-sm">
+                                            <select id="aws_<?= @$config->aws ?>" name="val" size="20" class="form-control input-sm">
                                                 <option value="">- loading -</option>
                                             </select>
                                         <? } else if ($config->type == 'multi') { ?>
-                                            <select id="aws_<?= @$config->aws ?>" name="val[]" size="15" multiple class="form-control input-sm">
+                                            <select id="aws_<?= @$config->aws ?>" name="val[]" size="20" multiple class="form-control input-sm">
                                                 <option value="">- loading -</option>
                                             </select>
                                         <? } else { ?>
