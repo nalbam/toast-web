@@ -7,7 +7,7 @@ $query_builder = TRUE;
 // default db
 $db['default'] = [
     'dsn' => '',
-    'hostname' => 'db.toast.sh',
+    'hostname' => 'toast-db.private-domain',
     'database' => 'toast',
     'username' => 'username',
     'password' => 'password',
