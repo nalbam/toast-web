@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.nalbam</groupId>
-    <artifactId>nalbam-toast</artifactId>
+    <artifactId>toast-web</artifactId>
     <version>0.0.0</version>
     <packaging>war</packaging>
 
-    <name>nalbam-toast</name>
+    <name>toast-web</name>
     <url>http://toast.sh</url>
 
     <build>
