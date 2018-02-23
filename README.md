@@ -1,5 +1,7 @@
 # nalbam-toast
 
+http://toast.sh
+
 ### install
 ```
 curl -s toast.sh/install | bash
@@ -13,3 +15,6 @@ curl -s toast.sh/install | bash
 
 ~/toaster/toast.sh vhost dom demo.toast.sh
 ```
+
+## demo
+http://demo.toast.sh
