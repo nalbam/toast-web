@@ -1,6 +1,6 @@
 # nalbam-toast
 
-http://toast.sh
+https://toast.sh
 
 ### install
 ```
