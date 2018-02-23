@@ -11,6 +11,7 @@ build:
   stage: build
   image: php:5.6
   script:
+    - apt-get install -y zip
     - ~/toaster/toast.sh build php
   artifacts:
     paths:
