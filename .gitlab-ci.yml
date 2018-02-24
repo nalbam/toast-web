@@ -5,6 +5,7 @@ stages:
   - deploy
 
 before_script:
+  - apt-get update
   - apt-get install git wget zip unzip
   - curl -s toast.sh/install-v3 | bash
 
