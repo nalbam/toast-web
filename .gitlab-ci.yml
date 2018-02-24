@@ -21,7 +21,7 @@ deploy:
   stage: deploy
   image: python:latest
   script:
-    - ~/toaster/toast.sh install aws
+    - pip install awscli
     - ~/toaster/toast.sh releases bucket public
 
 after_script:
