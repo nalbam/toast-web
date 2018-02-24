@@ -6,7 +6,7 @@ https://toast.sh
 ```
 curl -s toast.sh/install | bash
 
-~/toaster/toast.sh auto toast build demo
+~/toaster/toast.sh auto toast build {org}
 
 ~/toaster/toast.sh init httpd
 ~/toaster/toast.sh init php70
