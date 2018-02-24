@@ -25,4 +25,5 @@ deploy:
     - ~/toaster/toast.sh releases bucket public
 
 after_script:
-  - ls -al target
+  - ls -alh src/main/webapp
+  - ls -alh target
