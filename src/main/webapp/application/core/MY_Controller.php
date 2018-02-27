@@ -380,11 +380,11 @@ class MY_Controller extends CI_Controller
         if (!empty($this->status_list)) {
             return $this->status_list;
         }
-        $status_0 = json_decode('"\u2615"'); // Hot Beverage
-        $status_2 = json_decode('"\u26C4"'); // Snowman Without Snow
-        $status_5 = json_decode('"\u2697"'); // Alembic
-        $status_8 = json_decode('"\u26C8"'); // Thunder Cloud and Rain
-        $status_9 = json_decode('"\u26F3"'); // Flag In Hole
+        $status_0 = json_decode('"\u2615"');
+        $status_2 = json_decode('"\u26C4"');
+        $status_5 = json_decode('"\u2697"');
+        $status_8 = json_decode('"\u26D1"');
+        $status_9 = json_decode('"\u26F3"');
         $this->status_list = [
             (object)['code' => '10', 'name' => $status_0 . ' DEV 빌드'],
             (object)['code' => '12', 'name' => $status_2 . ' DEV 배포'],
