@@ -23,7 +23,6 @@ deploy:
   script:
     - pip install awscli
     - ~/toaster/toast.sh releases bucket public
-    - ~/toaster/toast.sh releases toast
 
 after_script:
   - ls -alh target
