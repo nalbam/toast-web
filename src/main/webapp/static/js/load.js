@@ -104,7 +104,8 @@ function load_ip(method, no) {
 function append_server(item) {
     let html = '';
     html += '<tr id="server-' + item.no + '">';
-    html += ' <td><input type="text" name="name" value="' + empty_value(item.name) + '" onchange="server_save(this, ' + item.no + ')" class="form-control input-sm" placeholder="name"/></td>';
+    // html += ' <td><input type="text" name="name" value="' + empty_value(item.name) + '" onchange="server_save(this, ' + item.no + ')" class="form-control input-sm" placeholder="name"/></td>';
+    html += ' <td><a href="/server/item/' + item.no + '" title="' + get_instance(item.instance) + '"><i class="fa fa-server"></i> ' + empty_value(item.name) + '</a></td>';
     html += ' <td><a href="/server/item/' + item.no + '" title="' + get_instance(item.instance) + '"><i class="fa fa-server"></i> ' + empty_value(item.id) + '</a></td>';
     html += ' <td>' + empty_href(item.ip) + '</td>';
     html += ' <td>' + empty_href(item.host) + '</td>';
