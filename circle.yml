@@ -12,7 +12,7 @@ dependencies:
 
 compile:
   pre:
-    - ~/toaster/toast.sh version $CIRCLE_BRANCH
+    - ~/toaster/toast.sh build version
     - ~/toaster/extra/composer.sh
   override:
     - mvn package -DskipTests
