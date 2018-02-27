@@ -9,10 +9,10 @@ before_script:
 
 build:
   stage: build
-  image: php:5.6
+  image: php:7.0
   script:
     - ~/toaster/toast.sh prepare
-    - ~/toaster/toast.sh build php
+    - ~/toaster/toast.sh build webapp
   artifacts:
     paths:
       - target/
