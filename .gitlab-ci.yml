@@ -9,9 +9,10 @@ before_script:
 
 build:
   stage: build
-  image: maven:latest
+  image: php:7.0
   script:
-    - mvn package -DskipTests
+    - ~/toaster/toast.sh prepare
+    - ~/toaster/toast.sh build webapp
   artifacts:
     paths:
       - target/
