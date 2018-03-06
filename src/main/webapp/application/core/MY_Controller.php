@@ -24,40 +24,6 @@ class MY_Controller extends CI_Controller
         $this->_get_user();
     }
 
-    public function _org()
-    {
-        return $this->org;
-    }
-
-    public function _user()
-    {
-        return $this->user;
-    }
-
-    public function _ono()
-    {
-        if (!empty($this->org)) {
-            return $this->org->no;
-        }
-        return 0;
-    }
-
-    public function _uno()
-    {
-        if (!empty($this->user)) {
-            return $this->user->no;
-        }
-        return 0;
-    }
-
-    public function _auth()
-    {
-        if (!empty($this->user)) {
-            return $this->user->auth;
-        }
-        return '';
-    }
-
     public function _get_org()
     {
         $org = $this->m_org->getOneById(DEFAULT_ORG);
@@ -101,17 +67,21 @@ class MY_Controller extends CI_Controller
         }
     }
 
-    public function _get_config($key, $val = '')
+    public function _set_cookie($name, $value = null, $expire = COOKIE_EXPIRES_LONG, $domain = COOKIE_DOMAIN)
     {
-        if (in_array($key, $this->config_cache)) {
-            return $this->config_cache[$key];
+        if (empty($value)) {
+            $expire = -1;
         }
-        $config = $this->m_config->getOneByKey($this->_ono(), $key);
-        if (!empty($config) && !empty($config->val)) {
-            $this->config_cache[$key] = trim($config->val);
-            return $this->config_cache[$key];
-        }
-        return $val;
+        $cookie = [
+            'name' => $name,
+            'value' => $value,
+            'expire' => $expire,
+            'domain' => $domain,
+            'path' => '/',
+            'prefix' => '',
+            'secure' => false
+        ];
+        $this->input->set_cookie($cookie);
     }
 
     public function _is_login()
@@ -146,6 +116,33 @@ class MY_Controller extends CI_Controller
         return $r;
     }
 
+    public function _auth()
+    {
+        if (!empty($this->user)) {
+            return $this->user->auth;
+        }
+        return '';
+    }
+
+    public function _message($result = false, $icon = 'fa-floppy-o', $action = 'danger', $message = '저장 실패.')
+    {
+        $data = [
+            'result' => $result,
+            'icon' => $icon,
+            'action' => $action,
+            'message' => $message
+        ];
+        $this->_json($data);
+    }
+
+    public function _json($data = [])
+    {
+        header('Access-Control-Allow-Origin: *');
+        header('Content-Type: application/json; charset=UTF-8');
+
+        echo json_encode($data);
+    }
+
     public function _redirect_url($default = '/')
     {
         $url = $this->input->cookie(R_URL, true);
@@ -159,23 +156,6 @@ class MY_Controller extends CI_Controller
         header('Location: ' . $url);
     }
 
-    public function _set_cookie($name, $value = null, $expire = COOKIE_EXPIRES_LONG, $domain = COOKIE_DOMAIN)
-    {
-        if (empty($value)) {
-            $expire = -1;
-        }
-        $cookie = [
-            'name' => $name,
-            'value' => $value,
-            'expire' => $expire,
-            'domain' => $domain,
-            'path' => '/',
-            'prefix' => '',
-            'secure' => false
-        ];
-        $this->input->set_cookie($cookie);
-    }
-
     public function _log($sno, $output, $success)
     {
         $data = [
@@ -185,6 +165,14 @@ class MY_Controller extends CI_Controller
             'success' => $success ? 'Y' : 'N'
         ];
         $this->m_log->insert($data);
+    }
+
+    public function _uno()
+    {
+        if (!empty($this->user)) {
+            return $this->user->no;
+        }
+        return 0;
     }
 
     public function _sms($data)
@@ -236,6 +224,27 @@ class MY_Controller extends CI_Controller
         } catch (Exception $e) {
             log_message('debug', 'slack webhook : ' . $e->getMessage());
         }
+    }
+
+    public function _get_config($key, $val = '')
+    {
+        if (in_array($key, $this->config_cache)) {
+            return $this->config_cache[$key];
+        }
+        $config = $this->m_config->getOneByKey($this->_ono(), $key);
+        if (!empty($config) && !empty($config->val)) {
+            $this->config_cache[$key] = trim($config->val);
+            return $this->config_cache[$key];
+        }
+        return $val;
+    }
+
+    public function _ono()
+    {
+        if (!empty($this->org)) {
+            return $this->org->no;
+        }
+        return 0;
     }
 
     public function _aws($param)
@@ -291,6 +300,19 @@ class MY_Controller extends CI_Controller
         return strtolower(preg_replace('/\s+/', '_', $value));
     }
 
+    public function _get_config_one($key)
+    {
+        $one = '';
+        $list = $this->_get_config_list();
+        foreach ($list as $item) {
+            if ($item->key == $key) {
+                $one = $item;
+                break;
+            }
+        }
+        return $one;
+    }
+
     public function _get_config_list()
     {
         if (!empty($this->config_list)) {
@@ -331,10 +353,10 @@ class MY_Controller extends CI_Controller
         return $this->config_list;
     }
 
-    public function _get_config_one($key)
+    public function _get_phase_one($key)
     {
         $one = '';
-        $list = $this->_get_config_list();
+        $list = $this->_get_phase_list();
         foreach ($list as $item) {
             if ($item->key == $key) {
                 $one = $item;
@@ -362,15 +384,18 @@ class MY_Controller extends CI_Controller
         return $this->phase_list;
     }
 
-    public function _get_phase_one($key)
+    public function _get_status_one($code)
     {
         $one = '';
-        $list = $this->_get_phase_list();
+        $list = $this->_get_status_list();
         foreach ($list as $item) {
-            if ($item->key == $key) {
+            if ($item->code == $code) {
                 $one = $item;
                 break;
             }
+        }
+        if (empty($one)) {
+            $one = $list[0];
         }
         return $one;
     }
@@ -409,18 +434,15 @@ class MY_Controller extends CI_Controller
         return $this->status_list;
     }
 
-    public function _get_status_one($code)
+    public function _get_instance_one($value)
     {
-        $one = '';
-        $list = $this->_get_status_list();
+        $one = null;
+        $list = $this->_get_instance_list();
         foreach ($list as $item) {
-            if ($item->code == $code) {
+            if ($item->value == $value) {
                 $one = $item;
                 break;
             }
-        }
-        if (empty($one)) {
-            $one = $list[0];
         }
         return $one;
     }
@@ -431,20 +453,21 @@ class MY_Controller extends CI_Controller
             return $this->instance_list;
         }
         $this->instance_list = [
-            (object)['value' => 'ami-e21cc38c', 'text' => 'Amazon Linux AMI 2017.03.1', 'user' => 'ec2-user'],
-            (object)['value' => 'ami-008a596e', 'text' => 'CentOS 7.3', 'user' => 'centos'],
-            (object)['value' => 'ami-034b966d', 'text' => 'CentOS 6.8', 'user' => 'centos'],
-            (object)['value' => 'ami-94d20dfa', 'text' => 'Ubuntu Server 16.04 LTS', 'user' => 'ubuntu']
+            (object)['value' => 'ami-863090e8', 'text' => 'Amazon Linux AMI 2017.09.1', 'user' => 'ec2-user'],
+            (object)['value' => 'ami-26f75748', 'text' => 'Red Hat Enterprise Linux 7.4', 'user' => 'ec2-user'],
+            //(object)['value' => 'ami-008a596e', 'text' => 'CentOS 7.3', 'user' => 'centos'],
+            //(object)['value' => 'ami-034b966d', 'text' => 'CentOS 6.8', 'user' => 'centos'],
+            (object)['value' => 'ami-ab77d4c5', 'text' => 'Ubuntu Server 16.04 LTS', 'user' => 'ubuntu']
         ];
         return $this->instance_list;
     }
 
-    public function _get_instance_one($value)
+    public function _get_instance_type($type)
     {
         $one = null;
-        $list = $this->_get_instance_list();
+        $list = $this->_get_instance_types();
         foreach ($list as $item) {
-            if ($item->value == $value) {
+            if ($item->type == $type) {
                 $one = $item;
                 break;
             }
@@ -486,19 +509,6 @@ class MY_Controller extends CI_Controller
         return $this->instance_types;
     }
 
-    public function _get_instance_type($type)
-    {
-        $one = null;
-        $list = $this->_get_instance_types();
-        foreach ($list as $item) {
-            if ($item->type == $type) {
-                $one = $item;
-                break;
-            }
-        }
-        return $one;
-    }
-
     public function _get_ip()
     {
         if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
@@ -526,23 +536,14 @@ class MY_Controller extends CI_Controller
         }
     }
 
-    public function _message($result = false, $icon = 'fa-floppy-o', $action = 'danger', $message = '저장 실패.')
+    public function _org()
     {
-        $data = [
-            'result' => $result,
-            'icon' => $icon,
-            'action' => $action,
-            'message' => $message
-        ];
-        $this->_json($data);
+        return $this->org;
     }
 
-    public function _json($data = [])
+    public function _user()
     {
-        header('Access-Control-Allow-Origin: *');
-        header('Content-Type: application/json; charset=UTF-8');
-
-        echo json_encode($data);
+        return $this->user;
     }
 
     public function _text($data = null)
