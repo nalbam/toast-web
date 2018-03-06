@@ -62,10 +62,14 @@ define('ENV_QA', 2);
 define('ENV_DEV', 1);
 define('ENV_LOCAL', 4);
 define('ENV_NALBAM', 5);
+define('ENV_DEMO', 5);
 
 if (preg_match('/nalbam\./', $_SERVER['HTTP_HOST'])) {
     define('ENVIRONMENT', 'development');
     define('ENV', ENV_NALBAM);
+} elseif (preg_match('/demo\./', $_SERVER['HTTP_HOST'])) {
+    define('ENVIRONMENT', 'development');
+    define('ENV', ENV_DEMO);
 } elseif (preg_match('/dev\./', $_SERVER['HTTP_HOST'])) {
     define('ENVIRONMENT', 'development');
     define('ENV', ENV_DEV);
