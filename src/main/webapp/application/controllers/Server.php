@@ -783,7 +783,7 @@ class Server extends MY_Controller
         // config
         $hosts = $this->_get_config('hosts');
 
-        $text .= "# toast default hosts" . PHP_EOL;
+        $text .= "# toast default" . PHP_EOL;
         $text .= PHP_EOL;
         if (!empty($server->name)) {
             $text .= "127.0.0.1 " . $server->name . PHP_EOL;
@@ -793,12 +793,12 @@ class Server extends MY_Controller
         $text .= $hosts . PHP_EOL;
         $text .= PHP_EOL;
 
-        $text .= "# toast " . $phase->phase . " hosts" . PHP_EOL;
+        $text .= "# toast " . $phase->phase . PHP_EOL;
         $text .= PHP_EOL;
         $text .= $phase->hosts . PHP_EOL;
         $text .= PHP_EOL;
 
-        $text .= "# toast " . $fleet->fleet . " hosts" . PHP_EOL;
+        $text .= "# toast " . $fleet->fleet . PHP_EOL;
         $text .= PHP_EOL;
         $text .= $fleet->hosts . PHP_EOL;
         $text .= PHP_EOL;
@@ -843,17 +843,17 @@ class Server extends MY_Controller
         // config
         $profile = $this->_get_config('profile');
 
-        $text .= "# toast default profile" . PHP_EOL;
+        $text .= "# toast default" . PHP_EOL;
         $text .= PHP_EOL;
         $text .= $profile . PHP_EOL;
         $text .= PHP_EOL;
 
-        $text .= "# toast " . $phase->phase . " profile" . PHP_EOL;
+        $text .= "# toast " . $phase->phase . PHP_EOL;
         $text .= PHP_EOL;
         $text .= $phase->profile . PHP_EOL;
         $text .= PHP_EOL;
 
-        $text .= "# toast " . $fleet->fleet . " profile" . PHP_EOL;
+        $text .= "# toast " . $fleet->fleet . PHP_EOL;
         $text .= PHP_EOL;
         $text .= $fleet->profile . PHP_EOL;
         $text .= PHP_EOL;
