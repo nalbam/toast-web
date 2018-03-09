@@ -453,7 +453,8 @@ class MY_Controller extends CI_Controller
             return $this->instance_list;
         }
         $this->instance_list = [
-            (object)['value' => 'ami-863090e8', 'text' => 'Amazon Linux AMI 2017.09.1', 'user' => 'ec2-user'],
+            (object)['value' => 'ami-863090e8', 'text' => 'Amazon Linux (2017.09.1)', 'user' => 'ec2-user'],
+            (object)['value' => 'ami-3e04a450', 'text' => 'Amazon Linux 2 (2017.12.0)', 'user' => 'ec2-user'],
             (object)['value' => 'ami-26f75748', 'text' => 'Red Hat Enterprise Linux 7.4', 'user' => 'ec2-user'],
             //(object)['value' => 'ami-008a596e', 'text' => 'CentOS 7.3', 'user' => 'centos'],
             //(object)['value' => 'ami-034b966d', 'text' => 'CentOS 6.8', 'user' => 'centos'],
