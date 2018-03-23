@@ -25,11 +25,11 @@ deployment:
   development:
     branch: /^(?!master$).*$/
     commands:
-      - ~/toaster/toast.sh publish bucket public
+      - ~/toaster/toast.sh release bucket public
   production:
     branch: master
     commands:
-      - ~/toaster/toast.sh publish bucket public
+      - ~/toaster/toast.sh release bucket public
 
 general:
   artifacts:
