@@ -34,3 +34,5 @@ deployment:
 general:
   artifacts:
     - target
+
+# https://circleci.com/api/v1.1/project/github/nalbam/toast-web/config-translation
